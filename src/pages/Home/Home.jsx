@@ -10,6 +10,7 @@ import { memberToProfile, onAvatarError } from '../../utils/memberMapper';
 import { useLanguage } from '../../context/LanguageContext/LanguageContext';
 import { localizeGroup, localizePost } from '../../i18n/catalogContent';
 import { useLocalizedDirectoryNeeds } from '../../hooks/useLocalizedDirectory';
+import { needSectionId } from '../../config/directoryNeedCategories';
 import mainLogo from '../../assets/main-logo.svg';
 import banner1 from '../../assets/banner-1.webp';
 import banner2 from '../../assets/banner-2.webp';
