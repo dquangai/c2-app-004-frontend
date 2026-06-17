@@ -1,0 +1,51 @@
+.main-layout-container {
+  display: flex;
+  height: 100vh;
+  background-color: transparent; /* Handled by body */
+  overflow: hidden;
+  color: var(--color-text);
+}
+
+.main-layout-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.main-layout-main-area {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-layout-page-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1 0 auto; /* Allow content to stretch so footer goes to bottom */
+}
+
+.main-layout-main-area--immersive {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.main-layout-page-wrapper--immersive {
+  max-width: none;
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

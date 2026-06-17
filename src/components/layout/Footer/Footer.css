@@ -1,0 +1,212 @@
+.footer-container {
+  margin-top: auto;
+  padding: 0;
+  color: #e2e8f0;
+}
+
+.footer-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+@media (min-width: 900px) {
+  .footer-layout {
+    flex-direction: row;
+    min-height: 300px;
+  }
+}
+
+/* —— Left brand panel (VinUni-style solid navy) —— */
+.footer-brand-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2.5rem 2rem;
+  background: var(--vinuni-navy, #002855);
+}
+
+@media (min-width: 900px) {
+  .footer-brand-panel {
+    flex: 0 0 28%;
+    max-width: 22rem;
+    padding: 2.75rem 2.25rem;
+  }
+}
+
+.footer-logo-link {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.footer-logo {
+  height: 4.5rem;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-privacy-link {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.footer-privacy-link:hover {
+  color: #fff;
+}
+
+/* —— Right panel with register image + blue overlay —— */
+.footer-links-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--vinuni-navy-mid, #003d7a);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.footer-links-overlay {
+  position: relative;
+  min-height: 100%;
+  padding: 2.25rem 1.75rem 3.25rem;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 40, 85, 0.92) 0%,
+    rgba(0, 61, 122, 0.85) 55%,
+    rgba(0, 40, 85, 0.88) 100%
+  );
+}
+
+@media (min-width: 900px) {
+  .footer-links-overlay {
+    padding: 2.5rem 2.5rem 2.75rem;
+  }
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 56rem;
+}
+
+@media (min-width: 640px) {
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: none;
+  }
+}
+
+.footer-heading {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.footer-links,
+.footer-contact-list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-contact-list li {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.footer-social-link:hover {
+  background: var(--vinuni-gold, #fbbf24);
+  color: var(--vinuni-navy-dark, #001a3a);
+}
+
+.footer-back-top {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.footer-back-top:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+@media (min-width: 900px) {
+  .footer-back-top {
+    right: 1.75rem;
+    bottom: 1.5rem;
+  }
+}

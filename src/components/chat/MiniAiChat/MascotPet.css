@@ -1,0 +1,152 @@
+.mascot-pet {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.mascot-pet__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  transform-origin: 50% 78%;
+  filter: drop-shadow(0 8px 14px rgba(26, 32, 69, 0.18));
+}
+
+.mascot-pet--fab {
+  width: 6.2rem;
+  height: 6.2rem;
+}
+
+.mascot-pet--header {
+  width: 3rem;
+  height: 3rem;
+}
+
+.mascot-pet--bubble {
+  width: 2rem;
+  height: 2rem;
+}
+
+.mascot-pet--hero {
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+.mascot-pet--idle .mascot-pet__image {
+  animation: mascot-float 3.2s ease-in-out infinite;
+}
+
+.mascot-pet--open .mascot-pet__image {
+  animation: mascot-listen 2.4s ease-in-out infinite;
+}
+
+.mascot-pet--hover .mascot-pet__image {
+  animation: mascot-hover 0.55s ease-in-out infinite alternate;
+}
+
+.mascot-pet--thinking .mascot-pet__image,
+.mascot-pet--typing .mascot-pet__image {
+  animation: mascot-typing 0.72s ease-in-out infinite;
+}
+
+.mascot-pet--happy .mascot-pet__image {
+  animation: mascot-hop 0.5s ease;
+}
+
+.mascot-pet--fab.mascot-pet--thinking::after,
+.mascot-pet--fab.mascot-pet--typing::after {
+  content: '';
+  position: absolute;
+  right: 0.72rem;
+  bottom: 1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-primary, #002855);
+  box-shadow:
+    -0.8rem 0 0 rgba(0, 40, 85, 0.68),
+    -1.6rem 0 0 rgba(0, 40, 85, 0.38);
+  animation: mascot-action-dots 0.9s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes mascot-hover {
+  from {
+    transform: translateY(-1px) rotate(-3deg) scale(1);
+  }
+
+  to {
+    transform: translateY(-5px) rotate(3deg) scale(1.04);
+  }
+}
+
+@keyframes mascot-listen {
+  0%,
+  100% {
+    transform: translateY(-1px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(-1.5deg);
+  }
+}
+
+@keyframes mascot-typing {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.8deg) scale(1);
+  }
+
+  45% {
+    transform: translateY(2px) rotate(0.8deg) scale(0.985);
+  }
+}
+
+@keyframes mascot-hop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  42% {
+    transform: translateY(-10px) scale(1.04);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mascot-action-dots {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot-pet__image,
+  .mascot-pet::after {
+    animation: none !important;
+  }
+}

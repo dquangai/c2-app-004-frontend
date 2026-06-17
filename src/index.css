@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@import "./styles/vinuni-theme.css";
+
+@theme {
+  /* Vinhomes — xanh đậm + vàng gold */
+  --color-primary: #002855;
+  --color-primary-hover: #001a3a;
+  --color-accent: #fbbf24;
+  --color-accent-hover: #d97706;
+
+  --color-deep-ocean: #001a3a;
+  --color-gold: #fbbf24;
+  --color-gold-hover: #b45309;
+  --color-gradient-primary: linear-gradient(135deg, #002855 0%, #003d7a 100%);
+  --color-gradient-accent: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  --color-gradient-gold: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+  --color-gradient-hero: linear-gradient(135deg, #002855 0%, #003d7a 55%, #d97706 100%);
+  --color-glass-bg: rgba(255, 255, 255, 0.75);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+
+  --color-surface: #ffffff;
+  --color-background: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-success: #10b981;
+
+  --shadow-soft: 0 4px 20px -2px rgba(0, 40, 85, 0.08);
+  --shadow-hover: 0 10px 25px -5px rgba(0, 40, 85, 0.12), 0 8px 10px -6px rgba(0, 40, 85, 0.06);
+  --shadow-glow: 0 0 20px rgba(251, 191, 36, 0.25);
+
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Montserrat', serif;
+  
+  --animate-slide-in-right: slideInRight 0.4s ease-out forwards;
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(0, 40, 85, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(251, 191, 36, 0.06) 0px, transparent 45%),
+    radial-gradient(at 100% 100%, rgba(0, 40, 85, 0.06) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  min-height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+}
+
+/* Page Fade-In Animation */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-layout-page-wrapper > * {
+  animation: page-fade-in 0.35s ease-out;
+}
+
+/* Global Button/Card Transitions */
+button, a, [class*="card"], [class*="btn"] {
+  transition: all 0.25s ease;
+}
+
+/* Custom scrollbar - themed */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 40, 85, 0.35), rgba(251, 191, 36, 0.35));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 40, 85, 0.5), rgba(217, 119, 6, 0.45));
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 40, 85, 0.35) transparent;
+}
+
+/* Modern Friendly Title Styling for Page Headings */
+.home-section-title,
+.home-features-title,
+.home-section-header h2,
+.directory-title,
+.social-title {
+  background: var(--color-gradient-hero) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-fill-color: transparent !important;
+  filter: drop-shadow(0px 2px 4px rgba(0, 40, 85, 0.15)) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
