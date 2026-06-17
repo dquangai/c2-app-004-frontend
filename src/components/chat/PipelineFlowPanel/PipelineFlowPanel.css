@@ -1,4 +1,4 @@
-.pipeline-flow {
+﻿.pipeline-flow {
   margin-top: 0.625rem;
   margin-bottom: 0.5rem;
   border: 1px solid var(--vini-border, #e2e8f0);
@@ -30,7 +30,7 @@
 
 .pipeline-flow-toggle-title {
   font-weight: 600;
-  color: #002855;
+  color: #3d5f8f;
 }
 
 .pipeline-flow-toggle-meta {
@@ -97,13 +97,13 @@
 }
 
 .pipeline-flow-step--active .pipeline-flow-step-dot {
-  background: #003d7a;
+  background: #5a7fb5;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
   animation: pipeline-pulse 1.2s ease-in-out infinite;
 }
 
 .pipeline-flow-step--active .pipeline-flow-step-line {
-  background: linear-gradient(#003d7a, #e2e8f0);
+  background: linear-gradient(#5a7fb5, #e2e8f0);
 }
 
 .pipeline-flow-step--pending .pipeline-flow-step-dot {
@@ -136,7 +136,7 @@
 }
 
 .pipeline-flow-step--active .pipeline-flow-step-status {
-  color: #003d7a;
+  color: #5a7fb5;
   font-weight: 600;
 }
 

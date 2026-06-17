@@ -1,23 +1,23 @@
 /* Vinhomes / VinUni chat palette — navy + gold */
 :root {
-  --vini-navy: var(--vinuni-navy, #002855);
-  --vini-navy-dark: var(--vinuni-navy-dark, #001a3a);
-  --vini-blue: var(--vinuni-navy-mid, #003d7a);
-  --vini-blue-soft: var(--vinuni-blue-soft, #e8eef8);
-  --vini-blue-muted: var(--vinuni-blue-muted, rgba(0, 40, 85, 0.1));
+  --vini-navy: var(--vinuni-navy, #3d5f8f);
+  --vini-navy-dark: var(--vinuni-navy-dark, #2f4d72);
+  --vini-blue: var(--vinuni-navy-mid, #5a7fb5);
+  --vini-blue-soft: var(--vinuni-blue-soft, #e8f0fa);
+  --vini-blue-muted: var(--vinuni-blue-muted, rgba(61, 95, 143, 0.12));
   --vini-red: var(--vinuni-red, #dc2626);
   --vini-red-dark: var(--vinuni-red-dark, #b91c1c);
   --vini-red-soft: var(--vinuni-red-soft, #fef2f2);
-  --vini-gold: var(--vinuni-gold, #fbbf24);
-  --vini-gold-dark: var(--vinuni-gold-dark, #b45309);
-  --vini-gold-soft: var(--vinuni-gold-soft, #fef9c3);
-  --vini-user-bubble-bg: #e8eef8;
-  --vini-user-bubble-text: #002855;
+  --vini-gold: var(--vinuni-gold, #d4a827);
+  --vini-gold-dark: var(--vinuni-gold-dark, #b8890f);
+  --vini-gold-soft: var(--vinuni-gold-soft, #fdf6e3);
+  --vini-user-bubble-bg: #e8f0fa;
+  --vini-user-bubble-text: #2f4d72;
   --vini-sidebar: #f1f5f9;
   --vini-sidebar-hover: #e2e8f0;
   --vini-surface: #ffffff;
   --vini-main-bg: #f8fafc;
-  --vini-text: #0f172a;
+  --vini-text: #1e3348;
   --vini-text-secondary: #64748b;
   --vini-border: #e2e8f0;
   --vini-thread-max: 46rem;

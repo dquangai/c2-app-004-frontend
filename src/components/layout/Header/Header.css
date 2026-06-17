@@ -1,4 +1,4 @@
-.header-container {
+﻿.header-container {
   height: 112px;
   border-bottom: 1px solid transparent;
   display: grid;
@@ -178,8 +178,8 @@
 }
 
 .header-lang-option--active {
-  background: #eff6ff;
-  color: #002855;
+  background: #e8f0fa;
+  color: #3d5f8f;
   font-weight: 600;
 }
 
@@ -250,11 +250,11 @@
 }
 
 .header-icon-btn--active {
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
 }
 
 .header-icon-btn--active:hover {
-  color: var(--color-primary-hover, #001a3a);
+  color: var(--color-primary-hover, #2f4d72);
 }
 
 .header-icon-badge {
@@ -510,12 +510,12 @@
 }
 
 .header-notif-btn-accept {
-  background-color: var(--color-primary, #002855);
+  background-color: var(--color-primary, #3d5f8f);
   color: #fff;
 }
 
 .header-notif-btn-accept:hover {
-  background-color: var(--color-primary-hover, #001a3a);
+  background-color: var(--color-primary-hover, #2f4d72);
 }
 
 .header-notif-btn-cancel {
@@ -549,7 +549,7 @@
 
 .header-notif-see-all:hover {
   background: rgba(0, 40, 85, 0.08);
-  color: var(--color-primary-hover, #001a3a);
+  color: var(--color-primary-hover, #2f4d72);
 }
 
 .header-icon-btn:hover {
@@ -557,11 +557,11 @@
 }
 
 .header-icon-btn--active {
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
 }
 
 .header-icon-btn--active:hover {
-  color: var(--color-primary-hover, #001a3a);
+  color: var(--color-primary-hover, #2f4d72);
 }
 
 .header-icon-badge {
@@ -934,7 +934,7 @@
   border-radius: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
-  border-color: var(--color-primary-hover, #001a3a);
+  border-color: var(--color-primary-hover, #2f4d72);
 }
 
 .header-btn-login:hover {

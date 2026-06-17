@@ -1,4 +1,4 @@
-.calendar-view-container {
+﻿.calendar-view-container {
   max-width: 100%;
   margin: 0 auto;
   padding: 1.5rem;
@@ -257,7 +257,7 @@
 }
 
 .calendar-view-event.blue .calendar-view-event-person {
-  color: #003d7a;
+  color: #5a7fb5;
 }
 
 /* Modal styling */
@@ -331,7 +331,7 @@
 .calendar-modal-btn-primary {
   flex: 1;
   padding: 0.5rem 1rem;
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: white;
   border: none;
   border-radius: 0.5rem;

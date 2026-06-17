@@ -1,4 +1,4 @@
-.social-container {
+﻿.social-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -396,7 +396,7 @@
 
 .add-comment-input:focus {
   background-color: white;
-  border-color: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
 }
 
 .add-comment-send-btn {
@@ -404,7 +404,7 @@
   right: 0.5rem;
   background: none;
   border: none;
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -441,7 +441,7 @@
 }
 
 .trending-list li {
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   font-weight: 500;
   cursor: pointer;
   font-size: 0.9375rem;

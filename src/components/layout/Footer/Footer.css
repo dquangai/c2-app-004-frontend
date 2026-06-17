@@ -24,7 +24,7 @@
   justify-content: center;
   gap: 1.25rem;
   padding: 2.5rem 2rem;
-  background: var(--vinuni-navy, #002855);
+  background: linear-gradient(160deg, #4a6fa0 0%, #3d5f8f 100%);
 }
 
 @media (min-width: 900px) {
@@ -74,7 +74,7 @@
 .footer-links-panel {
   flex: 1;
   position: relative;
-  background-color: var(--vinuni-navy-mid, #003d7a);
+  background-color: var(--vinuni-navy-mid, #5a7fb5);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -86,9 +86,9 @@
   padding: 2.25rem 1.75rem 3.25rem;
   background: linear-gradient(
     135deg,
-    rgba(0, 40, 85, 0.92) 0%,
-    rgba(0, 61, 122, 0.85) 55%,
-    rgba(0, 40, 85, 0.88) 100%
+    rgba(61, 95, 143, 0.88) 0%,
+    rgba(90, 127, 181, 0.82) 50%,
+    rgba(47, 77, 114, 0.86) 100%
   );
 }
 
@@ -177,8 +177,8 @@
 }
 
 .footer-social-link:hover {
-  background: var(--vinuni-gold, #fbbf24);
-  color: var(--vinuni-navy-dark, #001a3a);
+  background: var(--vinuni-gold, #d4a827);
+  color: var(--vinuni-navy-dark, #2f4d72);
 }
 
 .footer-back-top {

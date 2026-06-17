@@ -1,4 +1,4 @@
-.community-groups {
+﻿.community-groups {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
@@ -186,4 +186,4 @@
 
 .community-text-orange-500 { color: #f97316; }
 .community-text-green-500 { color: #22c55e; }
-.community-text-primary { color: var(--color-primary, #002855); }
+.community-text-primary { color: var(--color-primary, #3d5f8f); }

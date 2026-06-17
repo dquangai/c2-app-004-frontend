@@ -1,4 +1,4 @@
-.directory-container {
+﻿.directory-container {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
@@ -41,7 +41,7 @@
 .directory-title {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--color-primary, #002855) 0%, #002855 100%);
+  background: linear-gradient(135deg, var(--color-primary, #3d5f8f) 0%, #3d5f8f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -85,7 +85,7 @@
   padding: 0.6rem 1rem;
   border: none;
   border-radius: 0.65rem;
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
@@ -109,7 +109,7 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
 }
 
 .directory-ranking-help-close {
@@ -197,7 +197,7 @@
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.14), rgba(255, 255, 255, 0.95));
   border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 1rem;
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   text-align: left;
 }
 
@@ -229,7 +229,7 @@
   left: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
 }
 
 .directory-hero-search-input {
@@ -246,7 +246,7 @@
 }
 
 .directory-hero-search-input:focus {
-  border-color: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
   box-shadow: 0 0 0 4px rgba(0, 40, 85, 0.15), 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
@@ -279,16 +279,16 @@
 }
 
 .directory-need-chip:hover {
-  border-color: var(--color-primary, #002855);
-  color: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
+  color: var(--color-primary, #3d5f8f);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -5px rgba(0, 40, 85, 0.15);
   background: #fff;
 }
 
 .directory-need-chip.is-active {
-  border-color: var(--color-primary, #002855);
-  background: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
   box-shadow: 0 8px 20px -5px rgba(0, 40, 85, 0.25);
 }
@@ -298,7 +298,7 @@
 }
 
 .directory-need-chip-icon {
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   flex-shrink: 0;
 }
 
@@ -355,11 +355,11 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #b45309;
+  color: #b8890f;
 }
 
 .directory-need-section-icon {
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   flex-shrink: 0;
 }
 
@@ -441,8 +441,8 @@
 }
 
 .directory-podium-rank.rank-1 {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #002855;
+  background: linear-gradient(135deg, #d4a827, #f59e0b);
+  color: #3d5f8f;
 }
 
 .directory-podium-rank.rank-2 {
@@ -515,7 +515,7 @@
 
 .directory-podium-score {
   font-weight: 700;
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
 }
 
 .directory-podium-actions {
@@ -567,12 +567,12 @@
   border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 800;
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
 }
 
 .directory-honor-rank.rank-4 {
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
 }
 
 .directory-honor-avatar {
@@ -724,8 +724,8 @@
 }
 
 .directory-search-input:focus {
-  border-color: var(--color-primary, #002855);
-  box-shadow: 0 0 0 1px var(--color-primary, #002855); /* ring-1 */
+  border-color: var(--color-primary, #3d5f8f);
+  box-shadow: 0 0 0 1px var(--color-primary, #3d5f8f); /* ring-1 */
 }
 
 .directory-category-list {
@@ -754,12 +754,12 @@
 }
 
 .directory-category-label:hover .directory-radio-custom:not(.active) {
-  border-color: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
 }
 
 .directory-radio-custom.active {
-  border-color: var(--color-primary, #002855);
-  background-color: var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
+  background-color: var(--color-primary, #3d5f8f);
 }
 
 .directory-radio-inner {
@@ -791,8 +791,8 @@
 }
 
 .directory-select:focus {
-  border-color: var(--color-primary, #002855);
-  box-shadow: 0 0 0 1px var(--color-primary, #002855);
+  border-color: var(--color-primary, #3d5f8f);
+  box-shadow: 0 0 0 1px var(--color-primary, #3d5f8f);
 }
 
 .directory-filter-divider {
@@ -810,7 +810,7 @@
 .directory-checkbox {
   width: 1rem;
   height: 1rem;
-  accent-color: var(--color-primary, #002855); /* Fallback for custom checkbox */
+  accent-color: var(--color-primary, #3d5f8f); /* Fallback for custom checkbox */
   border: 1px solid #d1d5db;
   border-radius: 0.25rem;
 }
@@ -847,13 +847,13 @@
   border: none;
   border-radius: 9999px;
   background: rgba(0, 40, 85, 0.08);
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
 .directory-results-help-link:hover {
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
 }
 
@@ -919,8 +919,8 @@
 }
 
 .directory-rank-badge.rank-1 {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #002855;
+  background: linear-gradient(135deg, #d4a827, #f59e0b);
+  color: #3d5f8f;
 }
 
 .directory-rank-badge.rank-2 {
@@ -934,7 +934,7 @@
 }
 
 .directory-rank-badge.rank-4 {
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
 }
 
@@ -1127,7 +1127,7 @@
 .directory-btn-primary {
   flex: 1;
   padding: 0.6rem 1rem;
-  background: linear-gradient(135deg, var(--color-primary, #002855) 0%, var(--color-primary-hover, #001a3a) 100%);
+  background: linear-gradient(135deg, var(--color-primary, #3d5f8f) 0%, var(--color-primary-hover, #2f4d72) 100%);
   border: none;
   border-radius: 0.75rem;
   font-weight: 600;

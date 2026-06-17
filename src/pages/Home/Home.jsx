@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { Sparkles, Search, MapPin, ChevronRight, ChevronLeft, ShieldCheck, Star, Users, Heart, Package, ZoomIn, ZoomOut, Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BookingModal from '../../components/booking/BookingModal/BookingModal';
@@ -286,7 +286,7 @@ const Home = () => {
                   <div className={pin.isMain ? 'home-map-pin-icon-main' : 'home-map-pin-icon-small'}>
                     <MapPin
                       size={pin.isMain ? 20 : 16}
-                      fill={pin.isMain ? '#002855' : 'white'}
+                      fill={pin.isMain ? '#3d5f8f' : 'white'}
                       stroke={pin.isMain ? 'white' : 'currentColor'}
                     />
                   </div>
@@ -304,7 +304,7 @@ const Home = () => {
             </div>
 
             <button type="button" className="home-map-view-all-btn">
-              {t('home.map.viewAll')} <MapPin size={12} color="#002855" />
+              {t('home.map.viewAll')} <MapPin size={12} color="#3d5f8f" />
             </button>
           </div>
         </div>
@@ -331,14 +331,14 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent"></div>
                   </div>
                   <div className="w-full md:w-1/2 flex flex-col gap-4 text-left">
-                    <h3 className="text-2xl md:text-[28px] leading-tight font-bold bg-gradient-to-br from-[#002855] to-[#d97706] bg-clip-text text-transparent uppercase tracking-wide">
+                    <h3 className="text-2xl md:text-[28px] leading-tight font-bold bg-gradient-to-br from-[#3d5f8f] to-[#d4a827] bg-clip-text text-transparent uppercase tracking-wide">
                       {banner.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed text-base md:text-lg font-medium">
                       {banner.desc}
                     </p>
                     <div className="mt-4">
-                      <button onClick={() => navigate(banner.path)} className="inline-flex items-center gap-2 bg-gradient-to-r from-[#002855] to-[#003d7a] text-white px-7 py-3.5 rounded-full font-semibold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                      <button onClick={() => navigate(banner.path)} className="inline-flex items-center gap-2 bg-gradient-to-r from-[#3d5f8f] to-[#5a7fb5] text-white px-7 py-3.5 rounded-full font-semibold shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         {banner.cta} <ChevronRight size={18} />
                       </button>
                     </div>
@@ -365,7 +365,7 @@ const Home = () => {
                 <button 
                   key={idx} 
                   onClick={() => setCurrentBannerIndex(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${currentBannerIndex === idx ? 'w-8 bg-[#fbbf24]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${currentBannerIndex === idx ? 'w-8 bg-[#d4a827]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
@@ -437,17 +437,17 @@ const Home = () => {
                   </div>
                   
                   <h3 className="home-member-name">
-                    {member.name} {member.verified && <ShieldCheck size={14} color="#d97706" />}
+                    {member.name} {member.verified && <ShieldCheck size={14} color="#b8890f" />}
                   </h3>
                   <p className="home-member-title">{member.title}</p>
                   
                   <div className="home-member-rating">
-                    <Star size={12} fill="#facc15" color="#facc15" />
+                    <Star size={12} fill="#ffffff" color="#ffffff" />
                     <span>{member.rating}</span>
                     <span className="home-member-reviews">({member.reviews} {t('home.members.reviews')})</span>
                     {member.honorScore != null && (
                       <span className="home-member-honor-score">
-                        · {Math.round(member.honorScore)} {t('home.members.honorPoints')}
+                        {Math.round(member.honorScore)} {t('home.members.honorPoints')}
                       </span>
                     )}
                   </div>

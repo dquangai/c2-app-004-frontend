@@ -1,4 +1,4 @@
-.booking-history-container {
+﻿.booking-history-container {
   max-width: 100%;
   margin: 0 auto;
   padding: 1.5rem;
@@ -189,7 +189,7 @@
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-primary, #002855);
+  color: var(--color-primary, #3d5f8f);
   background-color: rgba(0, 40, 85, 0.1);
   border-radius: 0.5rem;
   transition: background-color 0.2s;
@@ -209,7 +209,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: white;
-  background-color: var(--color-primary, #002855);
+  background-color: var(--color-primary, #3d5f8f);
   border-radius: 0.5rem;
   transition: background-color 0.2s;
   border: none;
@@ -217,7 +217,7 @@
 }
 
 .booking-history-btn-rebook:hover {
-  background-color: var(--color-primary-hover, #001a3a);
+  background-color: var(--color-primary-hover, #2f4d72);
 }
 
 .booking-history-empty {

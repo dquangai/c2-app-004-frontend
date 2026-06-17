@@ -14,7 +14,7 @@ function initialsFrom(name, id = '') {
 
 export function avatarFor(name, id = '') {
   const label = initialsFrom(name, id);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect width="128" height="128" fill="#002855"/><text x="64" y="68" text-anchor="middle" fill="#ffffff" font-size="44" font-family="system-ui,sans-serif" font-weight="600">${label}</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect width="128" height="128" fill="#3d5f8f"/><text x="64" y="68" text-anchor="middle" fill="#ffffff" font-size="44" font-family="system-ui,sans-serif" font-weight="600">${label}</text></svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 

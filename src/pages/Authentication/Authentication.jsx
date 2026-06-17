@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Input, Button, Typography, Space, Divider, message, Breadcrumb, Modal, Grid } from 'antd'
+import { Form, Input, Button, Typography, Space, Divider, message, Breadcrumb, Modal, Grid, Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
 import { UserOutlined, LockOutlined, MailOutlined, GoogleOutlined, HomeOutlined, ArrowRightOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './Authentication.css'
@@ -20,6 +21,7 @@ const Authentication = () => {
   const [loginForm] = Form.useForm()
   const [registerForm] = Form.useForm()
   const [loading, setLoading] = useState(false)
+  const [loadingAction, setLoadingAction] = useState(null)
   const { login, register } = useAuth()
   const [messageApi, contextHolder] = message.useMessage()
   const [forgotPasswordModal, setForgotPasswordModal] = useState(false)
@@ -37,6 +39,7 @@ const Authentication = () => {
 
   const handleLogin = async (values) => {
     setLoading(true)
+    setLoadingAction('login')
     try {
       await login(values.email, values.password)
       messageApi.open({ type: 'success', content: 'Đăng nhập thành công!', duration: 3 })
@@ -46,11 +49,13 @@ const Authentication = () => {
       message.error(error.message || 'Email hoặc mật khẩu không chính xác, vui lòng thử lại')
     } finally {
       setLoading(false)
+      setLoadingAction(null)
     }
   }
 
   const handleRegister = async (values) => {
     setLoading(true)
+    setLoadingAction('register')
     const email = values.email.trim().toLowerCase()
     const verifyUrl = `/verify-email?email=${encodeURIComponent(email)}`
     try {
@@ -75,8 +80,14 @@ const Authentication = () => {
       message.error(msg)
     } finally {
       setLoading(false)
+      setLoadingAction(null)
     }
   }
+
+  const loadingHint =
+    loadingAction === 'register'
+      ? 'Đang tạo tài khoản…'
+      : 'Đang đăng nhập…'
 
   const handleForgotPassword = async (values) => {
     setForgotPasswordLoading(true)
@@ -149,7 +160,29 @@ const Authentication = () => {
           </div>
         </div>
 
-        <div className="auth-box" id="main">
+        <div className={`auth-box${loading ? ' auth-box--loading' : ''}`} id="main">
+          <AnimatePresence>
+            {loading && (
+              <motion.div
+                className="auth-loading-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                aria-live="polite"
+                aria-busy="true"
+              >
+                <div className="auth-loading-card">
+                  <Spin
+                    indicator={<LoadingOutlined className="auth-loading-spin" spin />}
+                    size="large"
+                  />
+                  <p className="auth-loading-title">{loadingHint}</p>
+                  <p className="auth-loading-subtitle">Vui lòng đợi trong giây lát</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Sign Up Form Container (Fixed Left Side) */}
           <motion.div
@@ -210,7 +243,13 @@ const Authentication = () => {
                   <Input.Password prefix={<LockOutlined />} placeholder="Nhập lại mật khẩu" />
                 </Form.Item>
 
-                <Button type="primary" htmlType="submit" className="auth-main-btn" loading={loading}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="auth-main-btn"
+                  loading={loading && loadingAction === 'register'}
+                  disabled={loading}
+                >
                   Đăng ký
                 </Button>
               </Form>
@@ -266,7 +305,13 @@ const Authentication = () => {
                   </Link>
                 </div>
 
-                <Button type="primary" htmlType="submit" className="auth-main-btn" loading={loading}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="auth-main-btn"
+                  loading={loading && loadingAction === 'login'}
+                  disabled={loading}
+                >
                   Đăng nhập
                 </Button>
               </Form>

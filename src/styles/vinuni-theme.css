@@ -1,20 +1,21 @@
 /**
- * Vinhomes brand palette — xanh đậm + vàng gold.
+ * Vinhomes brand palette — navy nhạt + vàng gold.
  * Import via index.css; dùng var(--color-*) hoặc var(--vinuni-*) trong toàn dự án.
  */
 :root {
-  --vinuni-navy: #002855;
-  --vinuni-navy-mid: #003d7a;
-  --vinuni-navy-dark: #001a3a;
-  --vinuni-gold: #fbbf24;
-  --vinuni-gold-mid: #f59e0b;
-  --vinuni-gold-dark: #b45309;
-  --vinuni-gold-soft: #fef9c3;
-  --vinuni-gold-muted: rgba(251, 191, 36, 0.15);
-  --vinuni-blue-soft: #e8eef8;
-  --vinuni-blue-muted: rgba(0, 40, 85, 0.1);
-  --vinuni-focus-ring: rgba(0, 40, 85, 0.15);
-  --vinuni-gold-glow: rgba(251, 191, 36, 0.35);
+  --vinuni-navy: #3d5f8f;
+  --vinuni-navy-mid: #5a7fb5;
+  --vinuni-navy-dark: #2f4d72;
+  --vinuni-navy-soft: #e8f0fa;
+  --vinuni-gold: #d4a827;
+  --vinuni-gold-mid: #e8b923;
+  --vinuni-gold-dark: #b8890f;
+  --vinuni-gold-soft: #fdf6e3;
+  --vinuni-gold-muted: rgba(212, 168, 39, 0.18);
+  --vinuni-blue-soft: #e8f0fa;
+  --vinuni-blue-muted: rgba(61, 95, 143, 0.12);
+  --vinuni-focus-ring: rgba(61, 95, 143, 0.2);
+  --vinuni-gold-glow: rgba(212, 168, 39, 0.32);
   /* Chỉ dùng cho trạng thái lỗi / cảnh báo */
   --vinuni-red: #dc2626;
   --vinuni-red-dark: #b91c1c;

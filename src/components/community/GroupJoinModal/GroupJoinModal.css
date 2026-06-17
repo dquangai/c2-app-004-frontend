@@ -1,4 +1,4 @@
-.group-join-modal-overlay {
+﻿.group-join-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 120;
@@ -176,7 +176,7 @@
 
 .group-join-modal-btn-primary {
   border: none;
-  background: var(--color-primary, #002855);
+  background: var(--color-primary, #3d5f8f);
   color: #fff;
 }
 

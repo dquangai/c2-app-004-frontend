@@ -1,4 +1,4 @@
-/* Facebook Messenger–inspired chat layout */
+﻿/* Facebook Messenger–inspired chat layout */
 
 .messenger {
   display: flex;
@@ -432,7 +432,7 @@
 
 .messenger-booking--pending {
   background: #fff4e5;
-  color: #b45309;
+  color: #b8890f;
 }
 
 .messenger-booking--accepted {

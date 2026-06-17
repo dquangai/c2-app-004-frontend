@@ -1,4 +1,4 @@
-.mini-ai-chat {
+﻿.mini-ai-chat {
   position: fixed;
   right: 1.25rem;
   bottom: 1.25rem;
@@ -125,7 +125,7 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.875rem 1rem;
-  background: linear-gradient(135deg, var(--color-primary, #002855) 0%, var(--color-accent, #fbbf24) 100%);
+  background: linear-gradient(135deg, var(--color-primary, #3d5f8f) 0%, var(--color-accent, #d4a827) 100%);
   color: #fff;
   flex-shrink: 0;
 }
