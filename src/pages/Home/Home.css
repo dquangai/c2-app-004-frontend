@@ -876,6 +876,41 @@
   transform: translateY(-4px);
 }
 
+.home-member-honor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.home-member-honor-group {
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.home-member-honor-score {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.home-members-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #64748b;
+  font-size: 0.9375rem;
+}
+
 .home-member-avatar-wrapper {
   position: relative;
   margin-bottom: 1rem;

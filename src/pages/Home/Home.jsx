@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Sparkles, Search, MapPin, ChevronRight, ChevronLeft, ShieldCheck, Star, Users, Heart, Package, ZoomIn, ZoomOut } from 'lucide-react';
+import { Sparkles, Search, MapPin, ChevronRight, ChevronLeft, ShieldCheck, Star, Users, Heart, Package, ZoomIn, ZoomOut, Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BookingModal from '../../components/booking/BookingModal/BookingModal';
 import ProfileDrawer from '../../components/profile/ProfileDrawer/ProfileDrawer';
 import HomeMapBackground from '../../components/map/HomeMapBackground';
-import { getFeaturedResidents } from '../../services/residentService';
+import { getHonorTopOneResidents } from '../../services/residentService';
 import { fetchPosts, fetchGroups } from '../../services/catalogService';
 import { memberToProfile, onAvatarError } from '../../utils/memberMapper';
 import { useLanguage } from '../../context/LanguageContext/LanguageContext';
 import { localizeGroup, localizePost } from '../../i18n/catalogContent';
 import { useLocalizedDirectoryNeeds } from '../../hooks/useLocalizedDirectory';
-import { needSectionId } from '../../config/directoryNeedCategories';
 import mainLogo from '../../assets/main-logo.svg';
 import banner1 from '../../assets/banner-1.webp';
 import banner2 from '../../assets/banner-2.webp';
@@ -47,6 +46,13 @@ const Home = () => {
   const navigate = useNavigate();
   const { t, locale } = useLanguage();
   const directoryNeeds = useLocalizedDirectoryNeeds();
+
+  const honorGroupLabels = useMemo(
+    () => Object.fromEntries(
+      directoryNeeds.map((need) => [need.id, need.rankGroupLabel || need.label]),
+    ),
+    [directoryNeeds],
+  );
 
   const introBanners = useMemo(() => {
     const items = t('home.banners');
@@ -91,11 +97,11 @@ const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     Promise.all([
-      getFeaturedResidents(4).catch(() => []),
+      getHonorTopOneResidents(4).catch(() => ({ members: [], period: null })),
       fetchPosts().catch(() => []),
       fetchGroups().catch(() => [])
-    ]).then(([membersData, postsData, groupsData]) => {
-      setFeaturedMembers(membersData || []);
+    ]).then(([honorData, postsData, groupsData]) => {
+      setFeaturedMembers(honorData?.members || []);
       
       if (postsData && Array.isArray(postsData) && postsData.length > 0) {
         setApiPosts(postsData.slice(0, 4).map((p, i) => {
@@ -373,7 +379,10 @@ const Home = () => {
             <h2>{t('home.members.title')}</h2>
             <p>{t('home.members.subtitle')}</p>
           </div>
-          <button onClick={() => navigate('/directory')} className="home-view-all-link">
+          <button
+            onClick={() => navigate('/directory')}
+            className="home-view-all-link"
+          >
             {t('home.members.viewAll')} <ChevronRight size={16} />
           </button>
         </div>
@@ -397,9 +406,20 @@ const Home = () => {
                   </div>
                 </div>
               ))
+            ) : featuredMembers.length === 0 ? (
+              <div className="home-members-empty">{t('home.members.empty')}</div>
             ) : (
               featuredMembers.map(member => (
                 <div key={member.id} className="home-member-card">
+                  {member.honorNeedId && (
+                    <div className="home-member-honor-badge">
+                      <Trophy size={12} />
+                      <span>{t('home.members.topBadge')}</span>
+                      <span className="home-member-honor-group">
+                        {honorGroupLabels[member.honorNeedId]}
+                      </span>
+                    </div>
+                  )}
                   <div className="home-member-avatar-wrapper">
                     <div className="home-member-avatar-inner">
                       <img
@@ -424,6 +444,11 @@ const Home = () => {
                     <Star size={12} fill="#facc15" color="#facc15" />
                     <span>{member.rating}</span>
                     <span className="home-member-reviews">({member.reviews} {t('home.members.reviews')})</span>
+                    {member.honorScore != null && (
+                      <span className="home-member-honor-score">
+                        · {Math.round(member.honorScore)} {t('home.members.honorPoints')}
+                      </span>
+                    )}
                   </div>
                   
                   <div className="home-member-area">

@@ -1,5 +1,6 @@
 import { fetchMembers, fetchMemberById, fetchHonorLeaderboard as fetchHonorLeaderboardApi } from './catalogService';
 import { mapMemberFromCatalog } from '../utils/memberMapper';
+import { DIRECTORY_NEEDS } from '../config/directoryNeedCategories';
 import {
   sessionCacheClearPrefix,
   sessionCacheFetch,
@@ -88,6 +89,27 @@ export async function listResidentsPage(options = {}, { force = false } = {}) {
     },
     { force }
   );
+}
+
+export async function getHonorTopOneResidents(limit = 4) {
+  const leaderboard = await fetchHonorLeaderboard();
+  const topOnes = [];
+  const seen = new Set();
+
+  for (const need of DIRECTORY_NEEDS) {
+    if (need.href) continue;
+    const members = leaderboard.topRankedByNeed[need.id] || [];
+    const top1 = members.find((member) => member.honorRank === 1) ?? members[0];
+    if (!top1 || seen.has(top1.id)) continue;
+    seen.add(top1.id);
+    topOnes.push({ ...top1, honorNeedId: need.id });
+    if (topOnes.length >= limit) break;
+  }
+
+  return {
+    members: topOnes,
+    period: leaderboard.period,
+  };
 }
 
 export async function getFeaturedResidents(limit = 4) {
