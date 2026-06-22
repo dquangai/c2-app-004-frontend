@@ -239,6 +239,7 @@ const MiniAiChat = () => {
               relatedGroups: result.relatedGroups || [],
               relatedEvents: result.relatedEvents || [],
               gateRefusal: result.gateRefusal || null,
+              intent: result.intent || result.response?.intent || null,
               createdAt: aiAt,
             },
           ];
@@ -429,6 +430,7 @@ const MiniAiChat = () => {
                       posts={msg.relatedPosts}
                       events={msg.relatedEvents}
                       groups={msg.relatedGroups}
+                      intent={msg.intent}
                     />
                   ) : null}
                 </div>

@@ -16,6 +16,7 @@ import {
   MessageCircle,
   Settings,
   HelpCircle,
+  Square,
 } from 'lucide-react';
 import BookingModal from '../../components/booking/BookingModal/BookingModal';
 import SidebarToggleIcon from '../../components/chat/SidebarToggleIcon/SidebarToggleIcon';
@@ -139,6 +140,7 @@ const AiAssistant = () => {
   const menuRef = useRef(null);
   const searchInputRef = useRef(null);
   const scrollHideTimerRef = useRef(null);
+  const abortControllerRef = useRef(null);
   const [scrollbarVisible, setScrollbarVisible] = useState(false);
 
   const isFreshChat = !chatHistory.some((m) => m.type === 'user');
@@ -163,6 +165,7 @@ const AiAssistant = () => {
       if (scrollHideTimerRef.current) {
         clearTimeout(scrollHideTimerRef.current);
       }
+      abortControllerRef.current?.abort();
     };
   }, []);
 
@@ -350,6 +353,8 @@ const AiAssistant = () => {
       setInputText('');
       setQuickReplies([]);
       setIsTyping(true);
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
       setChatHistory((prev) => [
         ...prev,
         {
@@ -370,6 +375,7 @@ const AiAssistant = () => {
         const result = await matchWithAiStream({
           message: query,
           conversationId,
+          signal: controller.signal,
           onDelta: (_chunk, streamedText) => {
             setChatHistory((prev) =>
               prev.map((msg) =>
@@ -436,6 +442,7 @@ const AiAssistant = () => {
                   relatedEvents: result.relatedEvents || [],
                   retrievalFlow: result.retrievalFlow || [],
                   gateRefusal: result.gateRefusal || null,
+                  intent: result.intent || result.response?.intent || null,
                 }
               : msg,
           );
@@ -443,6 +450,22 @@ const AiAssistant = () => {
           return next;
         });
       } catch (err) {
+        if (err?.name === 'AbortError' || controller.signal.aborted) {
+          setChatHistory((prev) =>
+            prev.map((msg) =>
+              msg.id === aiMsgId
+                ? {
+                    ...msg,
+                    text: msg.text?.trim() ? msg.text : t('ai.errors.fallbackAck'),
+                    hasResults: false,
+                    streaming: false,
+                    stopped: true,
+                  }
+                : msg,
+            ),
+          );
+          return;
+        }
         setError(err.message);
         setChatHistory((prev) => {
           const withoutPlaceholder = prev.filter((msg) => msg.id !== aiMsgId);
@@ -460,11 +483,18 @@ const AiAssistant = () => {
           ];
         });
       } finally {
+        if (abortControllerRef.current === controller) {
+          abortControllerRef.current = null;
+        }
         setIsTyping(false);
       }
     },
     [conversationId, inputText, isTyping, userId, persistCurrentSession, t],
   );
+
+  const handleStopResponse = useCallback(() => {
+    abortControllerRef.current?.abort();
+  }, []);
 
   useEffect(() => {
     if (!initialQuery) return;
@@ -538,12 +568,13 @@ const AiAssistant = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleSearch()}
-              disabled={isTyping || !hasInput}
-              className="ai-assistant-send-btn"
-              aria-label={t('ai.composer.send')}
+              onClick={isTyping ? handleStopResponse : () => handleSearch()}
+              disabled={!isTyping && !hasInput}
+              className={`ai-assistant-send-btn${isTyping ? ' ai-assistant-send-btn--stop' : ''}`}
+              aria-label={isTyping ? 'Dừng trả lời' : t('ai.composer.send')}
+              title={isTyping ? 'Dừng trả lời' : t('ai.composer.send')}
             >
-              <Send size={18} strokeWidth={2} />
+              {isTyping ? <Square size={14} fill="currentColor" strokeWidth={2.5} /> : <Send size={18} strokeWidth={2} />}
             </button>
           </div>
         </div>
@@ -687,6 +718,7 @@ const AiAssistant = () => {
               posts={msg.relatedPosts}
               events={msg.relatedEvents}
               groups={msg.relatedGroups}
+              intent={msg.intent}
             />
           ) : null}
 

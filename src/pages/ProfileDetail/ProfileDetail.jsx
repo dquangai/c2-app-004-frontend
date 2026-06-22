@@ -16,7 +16,8 @@ import { fetchMemberReviews } from '../../services/catalogService';
 
 import { getMyProfileUpdate } from '../../services/profileUpdateService';
 
-import { memberToProfile, onAvatarError } from '../../utils/memberMapper';
+import { avatarFor, memberToProfile, onAvatarError } from '../../utils/memberMapper';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 
 import { useLanguage } from '../../context/LanguageContext/LanguageContext';
 
@@ -38,6 +39,37 @@ function formatReviewDate(value, locale) {
 
 }
 
+function buildAccountFallbackProfile(user, id) {
+  if (!user) return null;
+
+  const emailName = user.email ? user.email.split('@')[0] : '';
+  const name = user.full_name || emailName || 'Cư dân V-Connect';
+  const title = user.bio || 'Cư dân cộng đồng Vinhomes';
+  const avatar = resolveMediaUrl(user.avatar_url) || avatarFor(name, user.id || id || 'me');
+
+  return {
+    id: id || user.member_id || user.id || 'me',
+    name,
+    title,
+    avatar,
+    verified: user.email_verified || false,
+    trust: 0,
+    rating: 0,
+    reviews: 0,
+    area: user.home_zone || user.residential_zone || 'Vinhomes',
+    about: 'Đây là hồ sơ cá nhân của bạn trong cộng đồng Vinhomes. Khi hồ sơ cung cấp dịch vụ được đồng bộ lại, phần kỹ năng và dịch vụ công khai sẽ hiển thị tại đây.',
+    skills: [title],
+    services: [],
+    isAccountFallback: true,
+  };
+}
+
+function normalizeInitialProfile(profile) {
+  if (!profile) return null;
+  if (Object.prototype.hasOwnProperty.call(profile, 'about')) return profile;
+  return memberToProfile(profile);
+}
+
 
 
 const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
@@ -56,7 +88,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const [profile, setProfile] = useState(initialProfile || null);
+  const [profile, setProfile] = useState(() => normalizeInitialProfile(initialProfile));
 
   const [memberRaw, setMemberRaw] = useState(null);
 
@@ -70,7 +102,15 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
 
 
-  const isOwnProfile = Boolean(user?.member_id && id && user.member_id === id);
+  const isOwnProfile = Boolean(
+    user
+      && (
+        !id
+        || id === 'me'
+        || id === user.member_id
+        || id === user.id
+      )
+  );
 
 
 
@@ -94,7 +134,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
     if (initialProfile) {
 
-      setProfile(initialProfile);
+      setProfile(normalizeInitialProfile(initialProfile));
 
       setLoading(false);
 
@@ -102,9 +142,11 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
     }
 
+    const fallbackProfile = isOwnProfile ? buildAccountFallbackProfile(user, id) : null;
+
     if (!id) {
 
-      setProfile(null);
+      setProfile(fallbackProfile);
 
       setLoading(false);
 
@@ -120,7 +162,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
         setMemberRaw(member?.raw || null);
 
-        setProfile(member ? memberToProfile(member) : null);
+        setProfile(member ? memberToProfile(member) : fallbackProfile);
 
       })
 
@@ -128,13 +170,13 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
         setMemberRaw(null);
 
-        setProfile(null);
+        setProfile(fallbackProfile);
 
       })
 
       .finally(() => setLoading(false));
 
-  }, [id, initialProfile]);
+  }, [id, initialProfile, isOwnProfile, user]);
 
 
 
@@ -233,6 +275,8 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
   const displayedRating = reviews?.average_rating || profile.rating;
 
   const displayedReviewCount = reviews?.review_count || profile.reviews;
+  const canEditPublicProfile = isOwnProfile && !profile.isAccountFallback;
+  const hasServices = Array.isArray(profile.services) && profile.services.length > 0;
 
 
 
@@ -362,7 +406,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
           <div className="profile-detail-header-actions">
 
-            {isOwnProfile ? (
+            {canEditPublicProfile ? (
 
               <button
 
@@ -380,8 +424,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
               </button>
 
-            ) : (
-
+            ) : isOwnProfile ? null : (
               <>
 
                 <button type="button" className="profile-detail-btn-secondary" onClick={() => navigate('/chat')}>
@@ -442,6 +485,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
 
 
+        {hasServices && (
         <div className="profile-detail-section-card">
 
           <h2 className="profile-detail-section-title">{t('profile.sections.services')}</h2>
@@ -477,6 +521,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
           </div>
 
         </div>
+        )}
 
 
 
@@ -564,7 +609,7 @@ const ProfileDetail = ({ profileId, initialProfile, onClose, isDrawer }) => {
 
 
 
-      {isOwnProfile && (
+      {canEditPublicProfile && (
 
         <ProfileEditModal
 

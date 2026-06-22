@@ -29,6 +29,13 @@ export async function listMembers() {
   return page.items;
 }
 
+export async function fetchDashboardStats(apiKey = getAdminApiKey()) {
+  const { data } = await apiClient.get('/api/admin/dashboard/stats', {
+    headers: adminHeaders(apiKey),
+  });
+  return data;
+}
+
 export async function getMember(memberId, apiKey = getAdminApiKey()) {
   const { data } = await apiClient.get(`/api/admin/members/${memberId}`, {
     headers: adminHeaders(apiKey),

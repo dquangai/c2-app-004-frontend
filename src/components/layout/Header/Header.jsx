@@ -50,6 +50,26 @@ const Header = () => {
   const accountAvatar = resolveMediaUrl(user?.avatar_url);
   const publicAvatar = accountAvatar || memberProfile?.avatar || null;
   const avatarSrc = publicAvatar || avatarFor(displayName, user?.id);
+  const accountProfileFallback = useMemo(() => {
+    if (!user) return null;
+    const name = getDisplayName(user);
+    const title = user.bio || t('header.userMenu.community');
+    return {
+      id: user.member_id || user.id || 'me',
+      name,
+      title,
+      avatar: avatarSrc,
+      verified: user.email_verified || false,
+      trust: 0,
+      rating: 0,
+      reviews: 0,
+      area: user.home_zone || user.residential_zone || 'Vinhomes',
+      about: 'Đây là hồ sơ cá nhân của bạn trong cộng đồng Vinhomes. Khi hồ sơ cung cấp dịch vụ được đồng bộ lại, phần kỹ năng và dịch vụ công khai sẽ hiển thị tại đây.',
+      skills: [title],
+      services: [],
+      isAccountFallback: true,
+    };
+  }, [avatarSrc, t, user]);
 
   useEffect(() => {
     if (!user?.member_id) {
@@ -554,7 +574,7 @@ const Header = () => {
           isOpen={isProfileDrawerOpen}
           onClose={() => setIsProfileDrawerOpen(false)}
           profileId={user.member_id}
-          profile={memberProfile ? memberToProfile(memberProfile) : undefined}
+          profile={memberProfile ? memberToProfile(memberProfile) : accountProfileFallback}
         />
       )}
     </header>

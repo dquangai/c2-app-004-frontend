@@ -346,6 +346,433 @@
   color: #94a3b8;
 }
 
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-kpi-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.admin-kpi-card {
+  --kpi-accent: #0f766e;
+  --kpi-soft: rgba(15, 118, 110, 0.1);
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  min-height: 126px;
+  padding: 1.15rem 1.2rem;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.82);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.72)),
+    var(--kpi-soft);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.07);
+  backdrop-filter: blur(14px);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.admin-kpi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--kpi-accent);
+}
+
+.admin-kpi-card-link:hover .admin-kpi-card {
+  border-color: color-mix(in srgb, var(--kpi-accent) 35%, #e2e8f0);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.1);
+  transform: translateY(-1px);
+}
+
+.admin-kpi-card--teal {
+  --kpi-accent: #0f766e;
+  --kpi-soft: rgba(20, 184, 166, 0.11);
+}
+
+.admin-kpi-card--blue {
+  --kpi-accent: #2563eb;
+  --kpi-soft: rgba(37, 99, 235, 0.09);
+}
+
+.admin-kpi-card--violet {
+  --kpi-accent: #7c3aed;
+  --kpi-soft: rgba(124, 58, 237, 0.09);
+}
+
+.admin-kpi-card--amber {
+  --kpi-accent: #d97706;
+  --kpi-soft: rgba(245, 158, 11, 0.12);
+}
+
+.admin-kpi-card--rose {
+  --kpi-accent: #e11d48;
+  --kpi-soft: rgba(225, 29, 72, 0.09);
+}
+
+.admin-kpi-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--kpi-accent);
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.22);
+}
+
+.admin-kpi-card__body {
+  min-width: 0;
+}
+
+.admin-kpi-card__body span,
+.admin-kpi-card__body small {
+  display: block;
+  color: #64748b;
+}
+
+.admin-kpi-card__body span {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.admin-kpi-card__body strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: #0f172a;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.admin-kpi-card__body small {
+  margin-top: 0.55rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-dashboard-grid--compact {
+  align-items: stretch;
+}
+
+.admin-stat-grid--dense {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.admin-panel__head > svg {
+  flex: 0 0 auto;
+  color: #64748b;
+}
+
+.admin-chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  color: #64748b;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.admin-donut-wrap {
+  display: grid;
+  grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.admin-donut {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+.admin-donut__track,
+.admin-donut__segment {
+  fill: none;
+  stroke-width: 16;
+}
+
+.admin-donut__track {
+  stroke: #e2e8f0;
+}
+
+.admin-donut__segment {
+  transition: stroke-dasharray 0.2s ease;
+}
+
+.admin-donut__value {
+  fill: #0f172a;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.admin-donut__label {
+  fill: #64748b;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.admin-chart-legend {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.admin-chart-legend--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding-top: 0.3rem;
+}
+
+.admin-chart-legend__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 0;
+  color: #475569;
+  font-size: 0.8125rem;
+}
+
+.admin-chart-legend--inline .admin-chart-legend__item {
+  display: inline-flex;
+}
+
+.admin-chart-legend__item span:not(.admin-chart-legend__swatch) {
+  min-width: 0;
+}
+
+.admin-chart-legend__item strong {
+  color: #0f172a;
+  font-size: 0.8125rem;
+}
+
+.admin-chart-legend__swatch {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 9999px;
+  flex: 0 0 auto;
+}
+
+.admin-bar-list {
+  display: grid;
+  gap: 0.78rem;
+}
+
+.admin-bar-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 44px;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.admin-bar-row__period {
+  color: #64748b;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.admin-bar-row strong {
+  color: #0f172a;
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+.admin-stacked-bar {
+  display: flex;
+  min-width: 0;
+  height: 18px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #f1f5f9;
+}
+
+.admin-stacked-bar span {
+  min-width: 2px;
+  height: 100%;
+}
+
+.admin-growth-chart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(54px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+  min-height: 220px;
+}
+
+.admin-growth-chart__item {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  gap: 0.35rem;
+  min-width: 0;
+  text-align: center;
+}
+
+.admin-growth-chart__bar-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 150px;
+  border-radius: 10px;
+  background: #f8fafc;
+  box-shadow: inset 0 0 0 1px #eef2f7;
+}
+
+.admin-growth-chart__bar {
+  display: block;
+  width: min(34px, 64%);
+  border-radius: 8px 8px 3px 3px;
+  background: linear-gradient(180deg, #14b8a6 0%, #2563eb 100%);
+}
+
+.admin-growth-chart__item strong {
+  color: #0f172a;
+  font-size: 0.8125rem;
+}
+
+.admin-growth-chart__item span {
+  color: #64748b;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.admin-booking-status {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.admin-booking-status__item {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.admin-booking-status__item span,
+.admin-booking-status__item small {
+  color: #64748b;
+  font-size: 0.8125rem;
+}
+
+.admin-booking-status__item strong {
+  color: #0f172a;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.admin-booking-status__item--ok {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.admin-booking-status__item--warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.admin-booking-status__item--danger {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.admin-catalog-counts,
+.admin-queue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 0.85rem;
+}
+
+.admin-catalog-counts span,
+.admin-queue-card {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.95rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.8125rem;
+}
+
+.admin-catalog-counts strong,
+.admin-queue-card strong {
+  color: #0f172a;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.admin-queue-card {
+  color: #475569;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.admin-queue-card:hover {
+  border-color: rgba(0, 40, 85, 0.35);
+  background: #fff;
+}
+
+.admin-queue-card svg {
+  color: var(--color-primary, #3d5f8f);
+}
+
+@media (min-width: 1080px) {
+  .admin-dashboard-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .admin-dashboard-grid--compact {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-kpi-card {
+    min-height: auto;
+  }
+
+  .admin-donut-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .admin-chart-legend {
+    width: 100%;
+  }
+
+  .admin-bar-row {
+    grid-template-columns: 52px minmax(0, 1fr) 36px;
+    gap: 0.55rem;
+  }
+
+  .admin-booking-status {
+    grid-template-columns: 1fr;
+  }
+}
+
 .admin-member-form__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

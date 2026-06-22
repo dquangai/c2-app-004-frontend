@@ -11,6 +11,12 @@ import {
 const RESIDENT_PREFIX = 'catalog:residents:';
 const HONOR_PREFIX = 'catalog:honor:v2:';
 
+function normalizeMemberId(id) {
+  const text = String(id || '').trim();
+  if (!text) return '';
+  return /^\d+$/.test(text) ? `mem_${text.padStart(3, '0')}` : text;
+}
+
 function honorCacheKey(options = {}) {
   return `${HONOR_PREFIX}${options.period || 'current'}`;
 }
@@ -120,6 +126,8 @@ export async function getFeaturedResidents(limit = 4) {
 }
 
 export async function getResidentById(id) {
-  const member = await fetchMemberById(id);
+  const memberId = normalizeMemberId(id);
+  if (!memberId) return null;
+  const member = await fetchMemberById(memberId);
   return member ? mapMemberFromCatalog(member) : null;
 }

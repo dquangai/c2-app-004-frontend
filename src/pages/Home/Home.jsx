@@ -42,6 +42,11 @@ const userAvatars = [
   "https://i.pravatar.cc/150?img=9"
 ];
 const userNames = ["Hải Yến", "Tuấn Anh", "Minh Tú", "Hoàng Nam"];
+const DEMO_PROFILE_IDS = ['mem_001', 'mem_002', 'mem_003', 'mem_004'];
+
+function demoProfileId(index) {
+  return DEMO_PROFILE_IDS[index % DEMO_PROFILE_IDS.length];
+}
 
 const Home = () => {
   const navigate = useNavigate();
@@ -169,7 +174,7 @@ const Home = () => {
   };
 
   const handleViewProfile = (member) => {
-    setSelectedProfileId(member.id || 1);
+    setSelectedProfileId(member.id || DEMO_PROFILE_IDS[0]);
   };
 
   const activeSlide = aiDemoSlides[visibleIndex % aiDemoSlides.length] || { user: '', ai: '' };
@@ -237,7 +242,7 @@ const Home = () => {
                     <div className="home-live-content">
                       <span 
                         className="home-live-name" 
-                        onClick={() => setSelectedProfileId((visibleIndex % userNames.length) + 1)}
+                        onClick={() => setSelectedProfileId(demoProfileId(visibleIndex))}
                         style={{ cursor: 'pointer' }}
                       >
                         {userNames[visibleIndex % userNames.length]}:
